@@ -6,11 +6,9 @@ import {
   MosaicNode,
 } from "react-mosaic-component";
 import "react-mosaic-component/react-mosaic-component.css";
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 import "./mosaic-container.css";
-import { Close } from "sbwb-icons";
+import { sg, EmptyBox } from "sbwb-ds";
 import { Toolbar } from "./toolbar";
 
 export interface MosaicLayout<T = number> {
@@ -105,7 +103,7 @@ export function MosaicContainer<T extends number = number>({
           title={widget.title}
           renderToolbar={() => (
             <div style={{ width: "100%" }}>
-              <Toolbar id={widget.id} title={widget.title} onClose={onClose} />
+              <Toolbar title={widget.title} onClose={onClose} />
             </div>
           )}
         >
@@ -126,21 +124,18 @@ export function MosaicContainer<T extends number = number>({
   );
 
   const defaultZeroState = (
-    <div className="flex items-center justify-center h-full bg-gray-50">
-      <div className="flex flex-col gap-1 items-center justify-center">
-        <Close className="w-10 h-10 text-gray-400" />
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">
-          No widgets to display
-        </h3>
-        <p className="text-gray-500 text-sm">
-          Add some widgets to your layout to get started
-        </p>
-      </div>
-    </div>
+    <EmptyBox
+      width="100%"
+      height="100%"
+      iconName="InfoFill0Md"
+      iconColor={sg.colors.neutralColors.colorNeutralCloudy}
+      title="Sem widget para exibir"
+      description="Clique em restaurar para retornar para a exibição padrão."
+    />
   );
 
   return (
-    <div className={`h-full w-full`}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Mosaic<T>
         renderTile={renderTile}
         value={value}

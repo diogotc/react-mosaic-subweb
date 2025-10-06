@@ -1,7 +1,7 @@
 {
   "name": "react-typescript",
   "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
+  "description": "React Mozaic Example",
   "keywords": [
     "typescript",
     "react",
@@ -9,23 +9,16 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
-    "@blueprintjs/core": "6.3.1",
-    "@blueprintjs/icons": "6.1.0",
-    "clsx": "2.1.1",
-    "loader-utils": "3.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-mosaic-component": "6.1.1",
-    "react-scripts": "5.0.1",
     "sbwb-ds": "3.18.0",
     "sbwb-icons": "1.8.0",
-    "styled-components": "^6.1.19",
-    "tailwind-merge": "3.3.1",
-    "tailwindcss": "4.1.14"
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
-    "@types/react": "18.2.38",
-    "@types/react-dom": "18.2.15",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1",
     "@vitejs/plugin-react": "^4.7.0",
     "typescript": "4.4.4",
     "vite": "^6.3.6"

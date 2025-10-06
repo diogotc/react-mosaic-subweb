@@ -130,13 +130,7 @@ export const App = () => {
   };
 
   return (
-    <Container
-      direction="column"
-      width="100%"
-      height="100vh"
-      padding="0"
-      margin="0"
-    >
+    <Container direction="column" width="100%" height="100%">
       <Container
         width="100%"
         height="100px"
@@ -152,9 +146,12 @@ export const App = () => {
           <p style={{ fontWeight: "bold" }}>Mozaico</p>
           <p>Arraste as janelas para organizá-las</p>
         </Container>
-        <Button iconName="UndoAnt" size="Small" onClick={handleResetLayout}>
-          Restaurar
-        </Button>
+        <Button
+          name="Restaurar"
+          iconName="UndoAnt"
+          size="Small"
+          onClick={handleResetLayout}
+        />
         <ActionButton
           iconName="SettingsFill0Ant"
           onClick={() => setIsPopoverActive((prev) => !prev)}
