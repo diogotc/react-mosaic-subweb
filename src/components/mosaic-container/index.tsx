@@ -1,17 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { useCallback, useEffect, useMemo, useState, ReactNode } from "react";
 import {
   Mosaic,
   MosaicContext,
   MosaicWindow,
-  type MosaicBranch,
-  type MosaicNode,
+  MosaicBranch,
+  MosaicNode,
 } from "react-mosaic-component";
 import "react-mosaic-component/react-mosaic-component.css";
 import "@blueprintjs/core/lib/css/blueprint.css";

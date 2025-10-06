@@ -1,17 +1,6 @@
-import React, {
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-  useEffect,
-} from "react";
-import {
-  ActionButton,
-  Button,
-  MenuMultiSelect,
-  type SelectOption,
-} from "sbwb-ds";
-import type { MosaicNode } from "react-mosaic-component";
+import React, { useMemo, useRef, useState, ReactNode, useEffect } from "react";
+import { ActionButton, Button, MenuMultiSelect, SelectOption } from "sbwb-ds";
+import { MosaicNode } from "react-mosaic-component";
 import { MosaicContainer } from "./components/mosaic-container";
 import { useMosaicLayout } from "./components/mosaic-container/hooks/useMosaicLayout";
 import { ComponentA } from "./components/ComponentA";
