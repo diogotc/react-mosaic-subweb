@@ -143,11 +143,11 @@ export const App = () => {
         gap="10px"
       >
         <Container backgroundColor="rgb(245, 245, 245)">
-          <p style={{ fontWeight: "bold" }}>Mozaico</p>
-          <p>Arraste as janelas para organizá-las</p>
+          <p style={{ fontWeight: "bold" }}>MozaReact Mozaic Example</p>
+          <p>Drag the windows to arrange them</p>
         </Container>
         <Button
-          name="Restaurar"
+          name="Restore"
           iconName="UndoAnt"
           size="Small"
           onClick={handleResetLayout}

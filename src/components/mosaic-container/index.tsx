@@ -129,8 +129,8 @@ export function MosaicContainer<T extends number = number>({
       height="100%"
       iconName="InfoFill0Md"
       iconColor={sg.colors.neutralColors.colorNeutralCloudy}
-      title="Sem widget para exibir"
-      description="Clique em restaurar para retornar para a exibição padrão."
+      title="No widget to display"
+      description="Click in the restore button to return to the default view."
     />
   );
 

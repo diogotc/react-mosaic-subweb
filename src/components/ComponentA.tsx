@@ -31,7 +31,7 @@ export function ComponentA() {
           }}
         >
           <Button
-            name="Cancelar"
+            name="Cancel"
             size="Small"
             variant="tertiary"
             width="74px"
@@ -49,7 +49,7 @@ export function ComponentA() {
             custom={{
               marginLeft: "24px",
             }}
-            name="Voltar"
+            name="Back"
             size="Small"
             variant="secondary"
             width="58px"
@@ -58,7 +58,7 @@ export function ComponentA() {
             custom={{
               marginLeft: "24px",
             }}
-            name="Avançar"
+            name="Next"
             size="Small"
             variant="primary"
             width="70px"
