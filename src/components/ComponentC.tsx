@@ -2,7 +2,7 @@ import { Button } from "sbwb-ds";
 
 export function ComponentC() {
   return (
-    <div className="flex flex-col gap-4 justify-between h-full p-6 overflow-auto">
+    <div className="flex flex-col gap-4 justify-between h-full p-6 overflow-auto bg-white">
       <table className="border-collapse w-full">
         <thead>
           <tr>

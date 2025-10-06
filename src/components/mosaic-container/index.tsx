@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, ReactNode } from "react";
 import {
   Mosaic,
-  MosaicContext,
   MosaicWindow,
   MosaicBranch,
   MosaicNode,
@@ -11,8 +10,8 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 import "./mosaic-container.css";
-import { ActionButton } from "sbwb-ds";
 import { Close } from "sbwb-icons";
+import { Toolbar } from "./toolbar";
 
 export interface MosaicLayout<T = number> {
   direction: "row" | "column";
@@ -40,7 +39,6 @@ export interface MosaicContainerProps<T extends number = number> {
 
   // Customization options
   zeroStateView: JSX.Element | null;
-  className?: string;
 
   // Widget creation
   createNewWidgetId?: () => T;
@@ -59,7 +57,6 @@ export function MosaicContainer<T extends number = number>({
   widgets,
   zeroStateView,
   onWidgetClose,
-  className = "",
 }: MosaicContainerProps<T>) {
   const [, updateState] = useState(0);
   const triggerRerender = useCallback(() => updateState((n) => n + 1), []);
@@ -82,6 +79,12 @@ export function MosaicContainer<T extends number = number>({
     (id: T, path: MosaicBranch[]) => {
       const widget = widgetMap[id];
 
+      const onClose = () => {
+        if (onWidgetClose) {
+          onWidgetClose(id as number);
+        }
+      };
+
       if (!widget) {
         return (
           <MosaicWindow<T> path={path} title={`Unknown Widget: ${id}`}>
@@ -100,36 +103,22 @@ export function MosaicContainer<T extends number = number>({
         <MosaicWindow<T>
           path={path}
           title={widget.title}
-          renderToolbar={
-            widget.customToolbar
-              ? () => (
-                  <div style={{ width: "100%" }}>{widget.customToolbar}</div>
-                )
-              : () => (
-                  <div className="flex justify-between items-center w-full p-4">
-                    {widget.title}
-                    <MosaicContext.Consumer>
-                      {({ mosaicActions }) => (
-                        <div className="flex gap-1">
-                          <ActionButton
-                            iconName="ExpandContentAnt"
-                            onClick={() => mosaicActions.expand(path)}
-                          />
-                          <ActionButton
-                            iconName="CloseAnt"
-                            onClick={() => {
-                              mosaicActions.remove(path);
-                              onWidgetClose && onWidgetClose(widget.id);
-                            }}
-                          />
-                        </div>
-                      )}
-                    </MosaicContext.Consumer>
-                  </div>
-                )
-          }
+          renderToolbar={() => (
+            <div style={{ width: "100%" }}>
+              <Toolbar id={widget.id} title={widget.title} onClose={onClose} />
+            </div>
+          )}
         >
-          <div className="h-full w-full overflow-auto">{widget.content}</div>
+          <div
+            style={{
+              width: "100%",
+              height: "calc(100% - 10px)",
+              backgroundColor: "white",
+              overflow: "hidden",
+            }}
+          >
+            {widget.content}
+          </div>
         </MosaicWindow>
       );
     },
@@ -151,7 +140,7 @@ export function MosaicContainer<T extends number = number>({
   );
 
   return (
-    <div className={`h-full w-full ${className}`}>
+    <div className={`h-full w-full`}>
       <Mosaic<T>
         renderTile={renderTile}
         value={value}

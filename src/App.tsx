@@ -1,5 +1,11 @@
 import React, { useMemo, useRef, useState, ReactNode, useEffect } from "react";
-import { ActionButton, Button, MenuMultiSelect, SelectOption } from "sbwb-ds";
+import {
+  ActionButton,
+  Button,
+  MenuMultiSelect,
+  SelectOption,
+  Container,
+} from "sbwb-ds";
 import { MosaicNode } from "react-mosaic-component";
 import { MosaicContainer } from "./components/mosaic-container";
 import { useMosaicLayout } from "./components/mosaic-container/hooks/useMosaicLayout";
@@ -124,51 +130,66 @@ export const App = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-180px)] bg-gray-100">
-      <div className="h-full p-4">
-        <div className="flex justify-between mb-4">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">Mosaico</h1>
-            <p className="text-gray-600">
-              Arraste as janelas para organizá-las
-            </p>
-          </div>
-          <div ref={selectContainerRef} className="flex gap-4">
-            <Button iconName="UndoAnt" size="Small" onClick={handleResetLayout}>
-              Restaurar
-            </Button>
-            <ActionButton
-              iconName="SettingsFill0Ant"
-              onClick={() => setIsPopoverActive((prev) => !prev)}
-            />
-            {isPopoverActive && (
-              <MenuMultiSelect
-                selectContainerRef={
-                  selectContainerRef as React.MutableRefObject<HTMLDivElement>
-                }
-                setExpanded={() => setIsPopoverActive(false)}
-                size="Medium"
-                inputValue=""
-                value={selectedWidgets}
-                selectOption={handleSelectWidget}
-                optionsSelect={ALL_WIDGETS}
-              />
-            )}
-          </div>
-        </div>
-
-        <div className="h-full border border-gray-300 rounded-lg overflow-hidden">
-          <MosaicContainer
-            widgets={activeWidgets}
-            value={layout}
-            onChange={handleLayoutChange}
-            onWidgetClose={handleWidgetClose}
-            zeroStateView={null}
-            defaultBackgroundColor="#ffffff"
-            className="h-full"
+    <Container
+      direction="column"
+      width="100%"
+      height="100vh"
+      padding="0"
+      margin="0"
+    >
+      <Container
+        width="100%"
+        height="100px"
+        padding="20px"
+        margin="0"
+        direction="row"
+        verticalAlign="center"
+        scroll={false}
+        backgroundColor="rgb(245, 245, 245)"
+        gap="10px"
+      >
+        <Container backgroundColor="rgb(245, 245, 245)">
+          <p style={{ fontWeight: "bold" }}>Mozaico</p>
+          <p>Arraste as janelas para organizá-las</p>
+        </Container>
+        <Button iconName="UndoAnt" size="Small" onClick={handleResetLayout}>
+          Restaurar
+        </Button>
+        <ActionButton
+          iconName="SettingsFill0Ant"
+          onClick={() => setIsPopoverActive((prev) => !prev)}
+        />
+        {isPopoverActive && (
+          <MenuMultiSelect
+            selectContainerRef={
+              selectContainerRef as React.MutableRefObject<HTMLDivElement>
+            }
+            setExpanded={() => setIsPopoverActive(false)}
+            size="Medium"
+            inputValue=""
+            value={selectedWidgets}
+            selectOption={handleSelectWidget}
+            optionsSelect={ALL_WIDGETS}
           />
-        </div>
-      </div>
-    </div>
+        )}
+      </Container>
+      <Container
+        width="100%"
+        height="calc(100vh - 100px)"
+        padding="0"
+        margin="0"
+        scroll={false}
+        backgroundColor="rgb(245, 245, 245)"
+      >
+        <MosaicContainer
+          widgets={activeWidgets}
+          value={layout}
+          onChange={handleLayoutChange}
+          onWidgetClose={handleWidgetClose}
+          zeroStateView={null}
+          defaultBackgroundColor="#ffffff"
+        />
+      </Container>
+    </Container>
   );
 };

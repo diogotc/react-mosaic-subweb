@@ -2,7 +2,7 @@ import { Button } from "sbwb-ds";
 
 export function ComponentA() {
   return (
-    <div className="flex flex-col space-between gap-4 h-full p-6 overflow-auto">
+    <div className="flex flex-col space-between gap-4 h-full p-6 overflow-auto bg-white">
       <table className="border-collapse w-full">
         <thead>
           <tr>
@@ -21,7 +21,7 @@ export function ComponentA() {
           ))}
         </tbody>
       </table>
-      <div className="flex gap-4 self-end">
+      <div className="flex gap-4 self-end bg-white">
         <Button variant="secondary" size="Small" iconName="AddAnt">
           Adicionar
         </Button>
