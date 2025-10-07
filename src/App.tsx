@@ -152,23 +152,25 @@ export const App = () => {
           size="Small"
           onClick={handleResetLayout}
         />
-        <ActionButton
-          iconName="SettingsFill0Ant"
-          onClick={() => setIsPopoverActive((prev) => !prev)}
-        />
-        {isPopoverActive && (
-          <MenuMultiSelect
-            selectContainerRef={
-              selectContainerRef as React.MutableRefObject<HTMLDivElement>
-            }
-            setExpanded={() => setIsPopoverActive(false)}
-            size="Medium"
-            inputValue=""
-            value={selectedWidgets}
-            selectOption={handleSelectWidget}
-            optionsSelect={ALL_WIDGETS}
+        <div ref={selectContainerRef}>
+          <ActionButton
+            iconName="SettingsFill0Ant"
+            onClick={() => setIsPopoverActive((prev) => !prev)}
           />
-        )}
+          {isPopoverActive && (
+            <MenuMultiSelect
+              selectContainerRef={
+                selectContainerRef as React.MutableRefObject<HTMLDivElement>
+              }
+              setExpanded={() => setIsPopoverActive(false)}
+              size="Medium"
+              inputValue=""
+              value={selectedWidgets}
+              selectOption={handleSelectWidget}
+              optionsSelect={ALL_WIDGETS}
+            />
+          )}
+        </div>
       </Container>
       <Container
         width="100%"
